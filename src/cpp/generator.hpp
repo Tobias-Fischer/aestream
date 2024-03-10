@@ -1,12 +1,7 @@
 #pragma once
 
-#if USE_CLANG
-#include <experimental/coroutine>
-namespace coroutinestd = std::experimental;
-#else
 #include <coroutine>
 namespace coroutinestd = std;
-#endif
 #include <iostream>
 #include <optional>
 
