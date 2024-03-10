@@ -6,6 +6,10 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
+if (APPLE)
+  add_definitions(-D_LIBCPP_DISABLE_AVAILABILITY)  
+endif()
+
 # Build with python lib
 option(USE_PYTHON "Buid Python lib" OFF)
 # CUDA support
