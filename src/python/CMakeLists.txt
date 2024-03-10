@@ -61,7 +61,7 @@ nanobind_add_module(
 
   "${module_source_files}" # Include e. g. camera vendors 
   module.cpp 
-  udp.cpp 
+  udp.hpp 
   udp_client.cpp 
   udp_client.hpp
   # iterator.cpp
