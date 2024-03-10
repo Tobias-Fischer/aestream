@@ -18,6 +18,8 @@
 
 #include <flatbuffers/flatbuffers.h>
 
+#include <boost/property_tree/detail/xml_parser_read_rapidxml.hpp>
+
 #include "utils.hpp"
 #include <aer.hpp>
 
@@ -28,7 +30,6 @@
 #include "generator.hpp"
 #include "imus_generated.h"
 #include "ioheader_generated.h"
-#include "rapidxml.hpp"
 #include "trigger_generated.h"
 
 struct AEDAT4 : FileBase {
@@ -231,9 +232,9 @@ private:
   const flatbuffers::Vector<const Event *> *event_vector = nullptr;
 
   std::map<std::string, std::string>
-  collect_attributes(rapidxml::xml_node<> *node) {
+  collect_attributes(boost::property_tree::detail::rapidxml::xml_node<> *node) {
     std::map<std::string, std::string> attributes;
-    for (const rapidxml::xml_attribute<> *a = node->first_attribute(); a;
+    for (const boost::property_tree::detail::rapidxml::xml_attribute<> *a = node->first_attribute(); a;
          a = a->next_attribute()) {
       auto name = std::string(a->name(), a->name_size());
       auto value = std::string(a->value(), a->value_size());

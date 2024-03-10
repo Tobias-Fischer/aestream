@@ -20,14 +20,6 @@ set(default_build_type Release)
 add_definitions(${GCC_COVERAGE_COMPILE_FLAGS})
 
 # Includes
-include_directories("include/")
-include_directories("/opt/homebrew/opt/lz4/include") # Compression
-link_directories("/opt/homebrew/opt/lz4/lib")
-include_directories("/opt/local/include")
-link_directories("/opt/local/lib")
-include_directories("/opt/homebrew/opt/sdl2/include/") # Video rendering?
-link_directories("/opt/homebrew/opt/sdl2/lib")
-include(include/CPM.cmake)
 
 # Add tests
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")

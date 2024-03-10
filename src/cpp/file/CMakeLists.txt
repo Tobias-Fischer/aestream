@@ -4,22 +4,8 @@ set(input_libraries aer)
 set(input_include_directories "")
 
 # Include flatbuffers and generate headers
-find_package(flatbuffers CONFIG NAMES flatbuffers Flatbuffers FlatBuffers QUIET)
+find_package(flatbuffers CONFIG NAMES flatbuffers Flatbuffers FlatBuffers REQUIRED)
 set(FLATBUFFERS_BUILD_TESTS OFF)
-if (flatbuffers_FOUND AND FLATBUFFERS_SOURCE_DIR) # Add flatbuffers from source dir (set in flake.nix)
-  add_subdirectory(${FLATBUFFERS_SOURCE_DIR} 
-                  ${CMAKE_CURRENT_BINARY_DIR}/flatbuffers-build
-                  EXCLUDE_FROM_ALL)
-else()
-  message(STATUS "flatbuffers not found, fetching from source")
-  include(FetchContent)
-  FetchContent_Declare(
-    flatbuffers
-    GIT_REPOSITORY https://github.com/google/flatbuffers.git
-    GIT_TAG v23.1.21
-  )
-  FetchContent_MakeAvailable(flatbuffers)
-endif()
 
 set(input_libraries ${input_libraries} flatbuffers)
 FILE(GLOB SCHEMA_FILES "${CMAKE_CURRENT_SOURCE_DIR}/flatbuffers/*.fbs")
@@ -45,7 +31,7 @@ else()
 endif()
 
 # Create the file library
-add_library(aestream_file STATIC ${input_sources})
+add_library(aestream_file SHARED ${input_sources})
 target_link_libraries(aestream_file PUBLIC fb_headers ${input_libraries})
 target_compile_definitions(aestream_file PUBLIC ${input_definitions})
 target_include_directories(aestream_file PUBLIC ${input_include_directories})
