@@ -4,7 +4,7 @@
 #include <string>
 #include <sys/types.h>
 
-#include "CLI11.hpp"
+#include <CLI11.hpp>
 
 // AER imports
 #include "aer.hpp"
