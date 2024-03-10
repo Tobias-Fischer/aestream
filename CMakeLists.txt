@@ -14,6 +14,8 @@ option(USE_CUDA "Build CUDA tensor export, if the library is found" ON)
 # iNiVation camera support (And other?)
 find_package(libcaer CONFIG QUIET)
 option(USE_CAMERA "Build with camera drivers?" ${libcaer_FOUND})
+find_package( OpenCV REQUIRED )
+include_directories( ${OpenCV_INCLUDE_DIRS} )
 
 # Compile flags
 set(default_build_type Release)
