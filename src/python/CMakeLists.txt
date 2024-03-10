@@ -56,7 +56,7 @@ find_package(nanobind CONFIG REQUIRED)
 # Add nanobind module
 nanobind_add_module(
   aestream_ext 
-  NB_STATIC STABLE_ABI LTO 
+  NB_SHARED STABLE_ABI 
   NOMINSIZE # Remove minimization to prevent -Os flags to propagate to nvcc
 
   "${module_source_files}" # Include e. g. camera vendors 
