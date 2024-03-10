@@ -48,7 +48,7 @@ public:
       throw std::invalid_argument("Inivation camera drivers not available.");
 #endif
     } else if (camera == Camera::Prophesee) {
-#ifdef WITH_CAER
+#ifdef WITH_METAVISION
       generator = prophesee_event_generator(is_streaming, std::nullopt);
 #else
       throw std::invalid_argument("Inivation camera drivers not available.");
@@ -74,7 +74,7 @@ public:
   }
 #endif
 // Prophesee via Metavision
-#ifdef WITH_CAER
+#ifdef WITH_METAVISION
   USBInput(py_size_t shape, const std::string device, const std::string serial)
       : buffer(shape, device, EVENT_BUFFER_SIZE) {
         std::cout << serial << std::endl;
