@@ -8,7 +8,7 @@
 #include "file.hpp"
 // #include "iterator.cpp"
 #include "types.hpp"
-#include "udp.cpp"
+#include "udp.hpp"
 
 #if defined(WITH_CAER) || defined(WITH_METAVISION)
 #include "usb.cpp"
