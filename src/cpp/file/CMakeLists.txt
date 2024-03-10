@@ -31,7 +31,7 @@ else()
 endif()
 
 # Create the file library
-add_library(aestream_file SHARED ${input_sources})
+add_library(aestream_file STATIC ${input_sources})
 set_target_properties(hello PROPERTIES LINKER_LANGUAGE CXX)
 target_link_libraries(aestream_file PUBLIC fb_headers ${input_libraries})
 target_compile_definitions(aestream_file PUBLIC ${input_definitions})
